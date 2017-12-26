@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.info.web.dao.TradeRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.info.web.pojo.TradeRecord" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="asset_repayment_id" property="assetRepaymentId" jdbcType="INTEGER" />
+    <result column="asset_order_id" property="assetOrderId" jdbcType="INTEGER" />
+    <result column="user_phone" property="userPhone" jdbcType="VARCHAR" />
+    <result column="realname" property="realname" jdbcType="VARCHAR" />
+    <result column="goods_name" property="goodsName" jdbcType="VARCHAR" />
+    <result column="goods_price" property="goodsPrice" jdbcType="BIGINT" />
+    <result column="goods_count" property="goodsCount" jdbcType="INTEGER" />
+    <result column="original_price" property="originalPrice" jdbcType="BIGINT" />
+    <result column="real_pay" property="realPay" jdbcType="BIGINT" />
+    <result column="order_from" property="orderFrom" jdbcType="SMALLINT" />
+    <result column="receipt_phone" property="receiptPhone" jdbcType="VARCHAR" />
+    <result column="receipt_address" property="receiptAddress" jdbcType="VARCHAR" />
+    <result column="delivery_type" property="deliveryType" jdbcType="INTEGER" />
+    <result column="delivery_number" property="deliveryNumber" jdbcType="VARCHAR" />
+    <result column="deliver_time" property="deliverTime" jdbcType="TIMESTAMP" />
+    <result column="deliver_fee" property="deliverFee" jdbcType="INTEGER" />
+    <result column="order_status" property="orderStatus" jdbcType="INTEGER" />
+    <result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
+    <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
+    <result column="pay_time" property="payTime" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, asset_repayment_id, asset_order_id, user_phone, realname, goods_name, 
+    goods_price, goods_count, original_price, real_pay, order_from, receipt_phone, receipt_address, 
+    delivery_type, delivery_number, deliver_time, deliver_fee, order_status, created_at, 
+    updated_at, pay_time, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from asset_trade_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from asset_trade_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.info.web.pojo.TradeRecord" >
+    insert into asset_trade_record (id, user_id, asset_repayment_id, 
+      asset_order_id, user_phone, realname, 
+      goods_name, goods_price, goods_count, 
+      original_price, real_pay, order_from, 
+      receipt_phone, receipt_address, delivery_type, 
+      delivery_number, deliver_time, deliver_fee, 
+      order_status, created_at, updated_at, 
+      pay_time, remark)
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=INTEGER}, #{assetRepaymentId,jdbcType=INTEGER}, 
+      #{assetOrderId,jdbcType=INTEGER}, #{userPhone,jdbcType=VARCHAR}, #{realname,jdbcType=VARCHAR}, 
+      #{goodsName,jdbcType=VARCHAR}, #{goodsPrice,jdbcType=BIGINT}, #{goodsCount,jdbcType=INTEGER}, 
+      #{originalPrice,jdbcType=BIGINT}, #{realPay,jdbcType=BIGINT}, #{orderFrom,jdbcType=SMALLINT}, 
+      #{receiptPhone,jdbcType=VARCHAR}, #{receiptAddress,jdbcType=VARCHAR}, #{deliveryType,jdbcType=INTEGER}, 
+      #{deliveryNumber,jdbcType=VARCHAR}, #{deliverTime,jdbcType=TIMESTAMP}, #{deliverFee,jdbcType=INTEGER}, 
+      #{orderStatus,jdbcType=INTEGER}, #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP}, 
+      #{payTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.info.web.pojo.TradeRecord" >
+    insert into asset_trade_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="assetRepaymentId != null" >
+        asset_repayment_id,
+      </if>
+      <if test="assetOrderId != null" >
+        asset_order_id,
+      </if>
+      <if test="userPhone != null" >
+        user_phone,
+      </if>
+      <if test="realname != null" >
+        realname,
+      </if>
+      <if test="goodsName != null" >
+        goods_name,
+      </if>
+      <if test="goodsPrice != null" >
+        goods_price,
+      </if>
+      <if test="goodsCount != null" >
+        goods_count,
+      </if>
+      <if test="originalPrice != null" >
+        original_price,
+      </if>
+      <if test="realPay != null" >
+        real_pay,
+      </if>
+      <if test="orderFrom != null" >
+        order_from,
+      </if>
+      <if test="receiptPhone != null" >
+        receipt_phone,
+      </if>
+      <if test="receiptAddress != null" >
+        receipt_address,
+      </if>
+      <if test="deliveryType != null" >
+        delivery_type,
+      </if>
+      <if test="deliveryNumber != null" >
+        delivery_number,
+      </if>
+      <if test="deliverTime != null" >
+        deliver_time,
+      </if>
+      <if test="deliverFee != null" >
+        deliver_fee,
+      </if>
+      <if test="orderStatus != null" >
+        order_status,
+      </if>
+      <if test="createdAt != null" >
+        created_at,
+      </if>
+      <if test="updatedAt != null" >
+        updated_at,
+      </if>
+      <if test="payTime != null" >
+        pay_time,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="assetRepaymentId != null" >
+        #{assetRepaymentId,jdbcType=INTEGER},
+      </if>
+      <if test="assetOrderId != null" >
+        #{assetOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="userPhone != null" >
+        #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null" >
+        #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsName != null" >
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsPrice != null" >
+        #{goodsPrice,jdbcType=BIGINT},
+      </if>
+      <if test="goodsCount != null" >
+        #{goodsCount,jdbcType=INTEGER},
+      </if>
+      <if test="originalPrice != null" >
+        #{originalPrice,jdbcType=BIGINT},
+      </if>
+      <if test="realPay != null" >
+        #{realPay,jdbcType=BIGINT},
+      </if>
+      <if test="orderFrom != null" >
+        #{orderFrom,jdbcType=SMALLINT},
+      </if>
+      <if test="receiptPhone != null" >
+        #{receiptPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="receiptAddress != null" >
+        #{receiptAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="deliveryType != null" >
+        #{deliveryType,jdbcType=INTEGER},
+      </if>
+      <if test="deliveryNumber != null" >
+        #{deliveryNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="deliverTime != null" >
+        #{deliverTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deliverFee != null" >
+        #{deliverFee,jdbcType=INTEGER},
+      </if>
+      <if test="orderStatus != null" >
+        #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null" >
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null" >
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payTime != null" >
+        #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.info.web.pojo.TradeRecord" >
+    update asset_trade_record
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="assetRepaymentId != null" >
+        asset_repayment_id = #{assetRepaymentId,jdbcType=INTEGER},
+      </if>
+      <if test="assetOrderId != null" >
+        asset_order_id = #{assetOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="userPhone != null" >
+        user_phone = #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null" >
+        realname = #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsName != null" >
+        goods_name = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsPrice != null" >
+        goods_price = #{goodsPrice,jdbcType=BIGINT},
+      </if>
+      <if test="goodsCount != null" >
+        goods_count = #{goodsCount,jdbcType=INTEGER},
+      </if>
+      <if test="originalPrice != null" >
+        original_price = #{originalPrice,jdbcType=BIGINT},
+      </if>
+      <if test="realPay != null" >
+        real_pay = #{realPay,jdbcType=BIGINT},
+      </if>
+      <if test="orderFrom != null" >
+        order_from = #{orderFrom,jdbcType=SMALLINT},
+      </if>
+      <if test="receiptPhone != null" >
+        receipt_phone = #{receiptPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="receiptAddress != null" >
+        receipt_address = #{receiptAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="deliveryType != null" >
+        delivery_type = #{deliveryType,jdbcType=INTEGER},
+      </if>
+      <if test="deliveryNumber != null" >
+        delivery_number = #{deliveryNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="deliverTime != null" >
+        deliver_time = #{deliverTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deliverFee != null" >
+        deliver_fee = #{deliverFee,jdbcType=INTEGER},
+      </if>
+      <if test="orderStatus != null" >
+        order_status = #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null" >
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null" >
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payTime != null" >
+        pay_time = #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.info.web.pojo.TradeRecord" >
+    update asset_trade_record
+    set user_id = #{userId,jdbcType=INTEGER},
+      asset_repayment_id = #{assetRepaymentId,jdbcType=INTEGER},
+      asset_order_id = #{assetOrderId,jdbcType=INTEGER},
+      user_phone = #{userPhone,jdbcType=VARCHAR},
+      realname = #{realname,jdbcType=VARCHAR},
+      goods_name = #{goodsName,jdbcType=VARCHAR},
+      goods_price = #{goodsPrice,jdbcType=BIGINT},
+      goods_count = #{goodsCount,jdbcType=INTEGER},
+      original_price = #{originalPrice,jdbcType=BIGINT},
+      real_pay = #{realPay,jdbcType=BIGINT},
+      order_from = #{orderFrom,jdbcType=SMALLINT},
+      receipt_phone = #{receiptPhone,jdbcType=VARCHAR},
+      receipt_address = #{receiptAddress,jdbcType=VARCHAR},
+      delivery_type = #{deliveryType,jdbcType=INTEGER},
+      delivery_number = #{deliveryNumber,jdbcType=VARCHAR},
+      deliver_time = #{deliverTime,jdbcType=TIMESTAMP},
+      deliver_fee = #{deliverFee,jdbcType=INTEGER},
+      order_status = #{orderStatus,jdbcType=INTEGER},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      pay_time = #{payTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
